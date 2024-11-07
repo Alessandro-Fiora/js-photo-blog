@@ -43,6 +43,22 @@ const printCards = async (photos) => {
 const addCardEventListeners = () => {
   const cardsEL = document.querySelectorAll(".photo-card");
   cardsEL.forEach((card) => card.addEventListener("click", cardClickHandler));
+  cardsEL.forEach((card) =>
+    card.addEventListener("mouseover", function () {
+      console.log("mouse over card");
+      console.log(this);
+
+      this.classList.add("animation");
+    })
+  );
+  cardsEL.forEach((card) =>
+    card.addEventListener("mouseout", function () {
+      console.log("mouse out card");
+      console.log(this);
+
+      this.classList.remove("animation");
+    })
+  );
 };
 /**
  * Handles the behaviour of the click event on each card
