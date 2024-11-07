@@ -21,10 +21,11 @@ const printCards = async (photos) => {
     cardsHTML += `
           <div class="col-12 col-md-6 col-lg-4">
               <div class="card photo-card h-100 rounded-0">
+                  <img class="pin" src="./img/pin.svg" alt="" />
                   <img
                   src="${photo.url}"
                   alt=""
-                  class="p-3 card-img-top img-fluid"
+                  class="photo-card-img p-3 card-img-top img-fluid"
                   />
                   <div class="card-body">
                       <p class="card-text">
@@ -47,7 +48,7 @@ const addCardEventListeners = () => {
  * Handles the behaviour of the click event on each card
  */
 function cardClickHandler() {
-  const cardImg = this.querySelector(".photo-card img");
+  const cardImg = this.querySelector(".photo-card-img");
   overlayImg.src = cardImg.src;
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");

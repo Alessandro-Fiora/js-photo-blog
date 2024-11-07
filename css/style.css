@@ -20,3 +20,22 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
+
+.photo-card {
+  box-shadow: 1px 1px 2px 1px #00000073;
+}
+
+#overlay img {
+  box-shadow: 0px 0px 10px 1px #00000073;
+}
+
+.photo-card {
+  position: relative;
+}
+
+.pin {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translate(50%, -25%);
+}
