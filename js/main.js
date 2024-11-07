@@ -1,10 +1,3 @@
-const cardRowEl = document.getElementById("card-row");
-const overlay = document.getElementById("overlay");
-const overlayCloseButton = document.getElementById("overlay-close-button");
-const overlayImg = document.querySelector("#overlay img");
-
-const cardNumber = 6;
-
 const fetchAPI = async () => {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/photos?_limit=${cardNumber}`
@@ -33,31 +26,36 @@ const printCards = async (photos) => {
           </div>`;
   });
   cardRowEl.innerHTML = cardsHTML;
+};
 
-  // Gestisco click card --- in futuro sarà una funzione
+const addCardEventListeners = () => {
   const cardsEL = document.querySelectorAll(".photo-card");
-  console.log(cardsEL);
+  cardsEL.forEach((card) => card.addEventListener("click", cardClickHandler));
+};
 
-  cardsEL.forEach((card) => {
-    card.addEventListener("click", function () {
-      const cardImg = this.querySelector(".photo-card img");
-      overlayImg.src = cardImg.src;
-      console.log(cardImg.src);
-      console.log(overlayImg);
+function cardClickHandler() {
+  const cardImg = this.querySelector(".photo-card img");
+  overlayImg.src = cardImg.src;
+  overlay.classList.remove("d-none");
+  overlay.classList.add("d-flex");
+}
 
-      overlay.classList.remove("d-none");
-      overlay.classList.add("d-flex");
-    });
-  });
+const closeButtonHandler = () => {
+  overlay.classList.remove("d-flex");
+  overlay.classList.add("d-none");
 };
 
 const cardsEntry = async () => {
   printCards(await fetchAPI());
+  addCardEventListeners();
+  overlayCloseButton.addEventListener("click", closeButtonHandler);
 };
 
-overlayCloseButton.addEventListener("click", () => {
-  overlay.classList.remove("d-flex");
-  overlay.classList.add("d-none");
-});
+const cardRowEl = document.getElementById("card-row");
+const overlay = document.getElementById("overlay");
+const overlayCloseButton = document.getElementById("overlay-close-button");
+const overlayImg = document.querySelector("#overlay img");
+
+const cardNumber = 6;
 
 cardsEntry();
