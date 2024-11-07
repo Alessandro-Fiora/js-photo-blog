@@ -1,6 +1,7 @@
 const cardRowEl = document.getElementById("card-row");
 const overlay = document.getElementById("overlay");
 const overlayCloseButton = document.getElementById("overlay-close-button");
+const overlayImg = document.querySelector("#overlay img");
 
 const cardNumber = 6;
 
@@ -33,11 +34,17 @@ const printCards = async (photos) => {
   });
   cardRowEl.innerHTML = cardsHTML;
 
+  // Gestisco click card --- in futuro sarà una funzione
   const cardsEL = document.querySelectorAll(".photo-card");
   console.log(cardsEL);
 
   cardsEL.forEach((card) => {
-    card.addEventListener("click", () => {
+    card.addEventListener("click", function () {
+      const cardImg = this.querySelector(".photo-card img");
+      overlayImg.src = cardImg.src;
+      console.log(cardImg.src);
+      console.log(overlayImg);
+
       overlay.classList.remove("d-none");
       overlay.classList.add("d-flex");
     });
