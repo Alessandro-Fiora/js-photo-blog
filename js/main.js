@@ -1,4 +1,6 @@
 const cardRowEl = document.getElementById("card-row");
+const overlay = document.getElementById("overlay");
+const overlayCloseButton = document.getElementById("overlay-close-button");
 
 const cardNumber = 6;
 
@@ -36,7 +38,8 @@ const printCards = async (photos) => {
 
   cardsEL.forEach((card) => {
     card.addEventListener("click", () => {
-      alert("click");
+      overlay.classList.remove("d-none");
+      overlay.classList.add("d-flex");
     });
   });
 };
@@ -45,30 +48,9 @@ const cardsEntry = async () => {
   printCards(await fetchAPI());
 };
 
+overlayCloseButton.addEventListener("click", () => {
+  overlay.classList.remove("d-flex");
+  overlay.classList.add("d-none");
+});
+
 cardsEntry();
-
-// fetch(
-//   `https://jsonplaceholder.typicode.com/photos?_limit=${cardNumber}`
-// ).then((response) =>
-//   response.json().then((data) => {
-//     console.log(data);
-
-//     data.forEach((photo) => {
-//       cardRowEl.innerHTML += `
-//     <div class="col-12 col-md-6 col-lg-4">
-//         <div class="card h-100 rounded-0">
-//             <img
-//             src="${photo.url}"
-//             alt=""
-//             class="p-3 card-img-top img-fluid"
-//             />
-//             <div class="card-body">
-//                 <p class="card-text">
-//                 ${photo.title}
-//                 </p>
-//             </div>
-//         </div>
-//     </div>`;
-//     });
-//   })
-// );
