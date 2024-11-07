@@ -41,23 +41,20 @@ const printCards = async (photos) => {
  * Adds event listeners for every card printed in the document
  */
 const addCardEventListeners = () => {
+  // Gets the card elements
   const cardsEL = document.querySelectorAll(".photo-card");
+
+  // Adds CLICK event listener
   cardsEL.forEach((card) => card.addEventListener("click", cardClickHandler));
-  cardsEL.forEach((card) =>
-    card.addEventListener("mouseover", function () {
-      console.log("mouse over card");
-      console.log(this);
 
-      this.classList.add("animation");
-    })
+  // Adds MOUSE OVER event listener
+  cardsEL.forEach((card) =>
+    card.addEventListener("mouseover", cardMouseoverHandler)
   );
-  cardsEL.forEach((card) =>
-    card.addEventListener("mouseout", function () {
-      console.log("mouse out card");
-      console.log(this);
 
-      this.classList.remove("animation");
-    })
+  // Adds MOUSE OUT event listener
+  cardsEL.forEach((card) =>
+    card.addEventListener("mouseout", cardMouseoutHandler)
   );
 };
 /**
@@ -68,6 +65,24 @@ function cardClickHandler() {
   overlayImg.src = cardImg.src;
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
+}
+/**
+ * Handles the behaviour of the mouse over event on each card
+ */
+function cardMouseoverHandler() {
+  const pin = this.querySelector(".pin");
+  // makes the pin disappear
+  pin.classList.add("d-none");
+  this.classList.add("animation");
+}
+/**
+ * Handles the behaviour of the mouse out event on each card
+ */
+function cardMouseoutHandler() {
+  const pin = this.querySelector(".pin");
+  // makes the pin reappear
+  pin.classList.remove("d-none");
+  this.classList.remove("animation");
 }
 /**
  * Handles the behaviour of the click event on the 'Close' button in the overlay
