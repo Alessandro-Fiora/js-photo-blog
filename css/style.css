@@ -5,6 +5,7 @@ body {
 }
 
 #page-main {
+  position: relative;
   background-image: url("../img/cork.png");
 }
 
@@ -22,15 +23,13 @@ body {
 }
 
 .photo-card {
+  cursor: pointer;
+  position: relative;
   box-shadow: 1px 1px 2px 1px #00000073;
 }
 
 #overlay img {
   box-shadow: 0px 0px 10px 1px #00000073;
-}
-
-.photo-card {
-  position: relative;
 }
 
 .pin {
