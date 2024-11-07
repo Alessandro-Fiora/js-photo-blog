@@ -10,7 +10,7 @@ const fetchAPI = async () => {
   return photos;
 };
 
-const printPhotos = async (photos) => {
+const printCards = async (photos) => {
   let cardsHTML = "";
   photos.forEach((photo) => {
     cardsHTML += `
@@ -31,7 +31,7 @@ const printPhotos = async (photos) => {
   });
   cardRowEl.innerHTML = cardsHTML;
 
-  const cardsEL = await document.querySelectorAll(".photo-card");
+  const cardsEL = document.querySelectorAll(".photo-card");
   console.log(cardsEL);
 
   cardsEL.forEach((card) => {
@@ -42,7 +42,7 @@ const printPhotos = async (photos) => {
 };
 
 const cardsEntry = async () => {
-  printPhotos(await fetchAPI());
+  printCards(await fetchAPI());
 };
 
 cardsEntry();
