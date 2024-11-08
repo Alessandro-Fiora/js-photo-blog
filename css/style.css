@@ -11,9 +11,6 @@ body {
 
 #overlay {
   position: fixed;
-  display: block;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
   right: 0;
@@ -26,6 +23,13 @@ body {
   cursor: pointer;
   position: relative;
   box-shadow: 1px 1px 2px 1px #00000073;
+  transition: all 1s;
+}
+
+.photo-card:hover {
+  z-index: 1;
+  transform: rotate(5deg);
+  box-shadow: 7px 5px 20px 11px #00000073;
 }
 
 #overlay img {
@@ -37,9 +41,4 @@ body {
   top: 0;
   right: 50%;
   transform: translate(50%, -25%);
-}
-
-.animation {
-  z-index: 1;
-  transform: rotate(5deg);
 }

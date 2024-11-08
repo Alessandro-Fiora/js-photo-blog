@@ -46,16 +46,6 @@ const addCardEventListeners = () => {
 
   // Adds CLICK event listener
   cardsEL.forEach((card) => card.addEventListener("click", cardClickHandler));
-
-  // Adds MOUSE OVER event listener
-  cardsEL.forEach((card) =>
-    card.addEventListener("mouseover", cardMouseoverHandler)
-  );
-
-  // Adds MOUSE OUT event listener
-  cardsEL.forEach((card) =>
-    card.addEventListener("mouseout", cardMouseoutHandler)
-  );
 };
 /**
  * Handles the behaviour of the click event on each card
@@ -65,24 +55,6 @@ function cardClickHandler() {
   overlayImg.src = cardImg.src;
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
-}
-/**
- * Handles the behaviour of the mouse over event on each card
- */
-function cardMouseoverHandler() {
-  const pin = this.querySelector(".pin");
-  // makes the pin disappear
-  pin.classList.add("d-none");
-  this.classList.add("animation");
-}
-/**
- * Handles the behaviour of the mouse out event on each card
- */
-function cardMouseoutHandler() {
-  const pin = this.querySelector(".pin");
-  // makes the pin reappear
-  pin.classList.remove("d-none");
-  this.classList.remove("animation");
 }
 /**
  * Handles the behaviour of the click event on the 'Close' button in the overlay
