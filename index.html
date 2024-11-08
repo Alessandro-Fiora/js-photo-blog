@@ -30,11 +30,19 @@
   </head>
   <body>
     <!-- HIDDEN OVERLAY -->
-    <div id="overlay" class="d-none justify-content-center align-items-center">
+    <div
+      id="overlay"
+      class="d-none justify-content-center align-items-center"
+      data-action="overlay-close"
+    >
       <!-- div to align center all overlay content -->
       <div class="d-flex flex-column align-items-center p-5">
         <!-- CLOSE BUTTON -->
-        <button id="overlay-close-button" class="btn btn-danger d-block mb-3">
+        <button
+          id="overlay-close-button"
+          class="btn btn-danger d-block mb-3"
+          data-action="overlay-close"
+        >
           Close
         </button>
         <!-- OVERLAY IMG -->

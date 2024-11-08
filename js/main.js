@@ -4,7 +4,7 @@
  * @param {Number} cardNumber number of desired photos
  * @returns {Array} array of photo objects
  */
-const fetchAPI = async (cardNumber) => {
+const fetchPhotos = async (cardNumber) => {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/photos?_limit=${cardNumber}`
   );
@@ -38,16 +38,6 @@ const printCards = async (photos) => {
   cardRowEl.innerHTML = cardsHTML;
 };
 /**
- * Adds event listeners for every card printed in the document
- */
-const addCardEventListeners = () => {
-  // Gets the card elements
-  const cardsEL = document.querySelectorAll(".photo-card");
-
-  // Adds CLICK event listener
-  cardsEL.forEach((card) => card.addEventListener("click", cardClickHandler));
-};
-/**
  * Handles the behaviour of the click event on each card
  */
 function cardClickHandler() {
@@ -57,25 +47,39 @@ function cardClickHandler() {
   overlay.classList.add("d-flex");
 }
 /**
- * Handles the behaviour of the click event on the 'Close' button in the overlay
+ * Handles the closing of the overlay
  */
-const closeButtonHandler = () => {
-  overlay.classList.remove("d-flex");
-  overlay.classList.add("d-none");
+const closeOverlayHandler = (e) => {
+  if (e.target.getAttribute("data-action") === "overlay-close") {
+    overlay.classList.remove("d-flex");
+    overlay.classList.add("d-none");
+  }
 };
 /**
  * Handles the API call to get all the photos and prints them in the page, then adds event listeners for click behaviour
  */
-const cardsEntry = async () => {
-  printCards(await fetchAPI(cardNumber));
-  addCardEventListeners();
-  overlayCloseButton.addEventListener("click", closeButtonHandler);
+const cardsInit = async () => {
+  printCards(await fetchPhotos(cardNumber));
+  // Gets the card elements
+  const cardsEL = document.querySelectorAll(".photo-card");
+  // Adds CLICK event listener
+  cardsEL.forEach((card) => card.addEventListener("click", cardClickHandler));
+  // Gets the nodes which have to close the overlay
+  const overlayCloseElements = document.querySelectorAll(
+    "[data-action = overlay-close]"
+  );
+  // Adds CLICK event listeners for the elements that have to close the overlay
+  overlayCloseElements.forEach((element) => {
+    element.addEventListener("click", closeOverlayHandler);
+  });
 };
 
 // * ------------------------------------------------------ GETTING NODES FROM DOM -------------------------------------------------------
 const cardRowEl = document.getElementById("card-row");
 const overlay = document.getElementById("overlay");
-const overlayCloseButton = document.getElementById("overlay-close-button");
+const overlayCloseElementsButton = document.getElementById(
+  "overlay-close-button"
+);
 const overlayImg = document.querySelector("#overlay img");
 
 // * ------------------------------------------------------ MAIN LOGIC -------------------------------------------------------------------
@@ -84,4 +88,4 @@ const overlayImg = document.querySelector("#overlay img");
 const cardNumber = 6;
 
 // AJAX API call, card generation and behaviour
-cardsEntry();
+cardsInit();
