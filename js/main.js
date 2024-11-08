@@ -77,9 +77,6 @@ const cardsInit = async () => {
 // * ------------------------------------------------------ GETTING NODES FROM DOM -------------------------------------------------------
 const cardRowEl = document.getElementById("card-row");
 const overlay = document.getElementById("overlay");
-const overlayCloseElementsButton = document.getElementById(
-  "overlay-close-button"
-);
 const overlayImg = document.querySelector("#overlay img");
 
 // * ------------------------------------------------------ MAIN LOGIC -------------------------------------------------------------------

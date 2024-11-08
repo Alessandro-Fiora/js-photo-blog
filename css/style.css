@@ -2,12 +2,19 @@ body {
   position: relative;
   background-image: url("../img/wall.png");
   background-size: cover;
+
+  font-family: "Edu TAS Beginner", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #page-main {
   position: relative;
   background-image: url("../img/cork.png");
 }
+
+/** OVERLAY **/
 
 #overlay {
   position: fixed;
@@ -19,6 +26,12 @@ body {
   z-index: 2;
 }
 
+#overlay img {
+  box-shadow: 0px 0px 10px 1px #00000073;
+}
+
+/** CARDS **/
+
 .photo-card {
   cursor: pointer;
   position: relative;
@@ -28,16 +41,8 @@ body {
 
 .photo-card:hover {
   z-index: 1;
-  transform: rotate(5deg) scale(1.1);
+  transform: rotate(10deg) scale(1.1);
   box-shadow: 7px 5px 20px 11px #00000073;
-}
-
-.photo-card:hover .pin {
-  display: none;
-}
-
-#overlay img {
-  box-shadow: 0px 0px 10px 1px #00000073;
 }
 
 .pin {
@@ -45,4 +50,8 @@ body {
   top: 0;
   right: 50%;
   transform: translate(50%, -25%);
+}
+
+.photo-card:hover .pin {
+  display: none;
 }
