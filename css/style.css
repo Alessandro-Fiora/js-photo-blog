@@ -1,3 +1,5 @@
+/* ! BODY !*/
+
 body {
   position: relative;
   background-image: url("../img/wall.png");
@@ -8,6 +10,8 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+/* ! PAGE MAIN !*/
 
 #page-main {
   position: relative;
