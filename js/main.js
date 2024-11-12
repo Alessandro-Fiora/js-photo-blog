@@ -45,6 +45,7 @@ function cardClickHandler() {
   overlayImg.src = cardImg.src;
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
+  document.body.style.overflow = "hidden";
 }
 /**
  * Handles the closing of the overlay
@@ -53,6 +54,7 @@ const closeOverlayHandler = (e) => {
   if (e.target.getAttribute("data-action") === "overlay-close") {
     overlay.classList.remove("d-flex");
     overlay.classList.add("d-none");
+    document.body.style.overflow = "auto";
   }
 };
 /**
@@ -75,6 +77,7 @@ const cardsInit = async () => {
 };
 
 // * ------------------------------------------------------ GETTING NODES FROM DOM -------------------------------------------------------
+
 const cardRowEl = document.getElementById("card-row");
 const overlay = document.getElementById("overlay");
 const overlayImg = document.querySelector("#overlay img");
